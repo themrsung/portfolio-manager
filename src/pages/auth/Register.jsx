@@ -1,18 +1,26 @@
 import { useState } from "react"
-import { login } from "../../api/authApi"
+import { useNavigate } from "react-router-dom"
+import { addUser } from "../../api/authApi"
 
-export default function Login() {
+export default function Register() {
+    const navigate = useNavigate()
+
     const [id, setId] = useState("")
     const [password, setPassword] = useState("")
 
-    const onLoginFormSubmitted = async () => {
-        const res = await login(id, password)
+    const onRegisterFormSubmit = async () => {
+        const user = {
+            id: id,
+            password: password
+        }
+
+        const res = await addUser(user)
         if (!res) {
-            alert("로그인 실패")
+            alert("실패")
             return
         }
 
-        alert("로그인 성공")
+        navigate("/login")
     }
 
     return (
@@ -20,7 +28,7 @@ export default function Login() {
             <form
                 onSubmit={(e) => {
                     e.preventDefault()
-                    onLoginFormSubmitted()
+                    onRegisterFormSubmit()
                 }}
             >
                 <input
@@ -35,7 +43,7 @@ export default function Login() {
                         setPassword(e.target.value)
                     }}
                 />
-                <button type="submit">login</button>
+                <button type="submit">register</button>
             </form>
         </>
     )

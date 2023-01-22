@@ -5,7 +5,7 @@ import {
     clearCurrentSession,
     setCurrentSession
 } from "../redux/reducers/currentSessionReducer"
-import { SERVER_URL } from "./apiSettings"
+import { PASSWORD_HASH_VERSION, SERVER_URL } from "./apiSettings"
 
 export const getUsers = async () => {
     const res = await axios.get(`${SERVER_URL}/users`)
@@ -42,6 +42,7 @@ export const login = async (id, password) => {
             authKey: uuid()
         })
     )
+    return true
 }
 
 export const logout = () => {
@@ -49,7 +50,14 @@ export const logout = () => {
 }
 
 export const addUser = async (user) => {
-    const res = await axios.post(`${SERVER_URL}/users`, user)
+    const passwordHashedUser = user
+    passwordHashedUser.password = HashPassword.hashPassword(
+        PASSWORD_HASH_VERSION,
+        user.password
+    )
+    passwordHashedUser.passwordHashVersion = PASSWORD_HASH_VERSION
+
+    const res = await axios.post(`${SERVER_URL}/users`, passwordHashedUser)
     return res.data
 }
 
