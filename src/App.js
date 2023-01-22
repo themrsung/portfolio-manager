@@ -5,10 +5,12 @@ import Register from "./pages/auth/Register"
 import Home from "./pages/Home"
 import AddItem from "./components/portfolio/AddItem"
 import PortfolioItem from "./components/portfolio/PortfolioItem"
+import NavigationBar from "./components/NavigationBar"
 
 function App() {
     return (
         <BrowserRouter>
+            <NavigationBar />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="login" element={<Login />} />
