@@ -1,21 +1,13 @@
-import { useEffect, useState } from "react"
-import { getDecryptedItem } from "../../api/itemsApi"
-
-export default function PortfolioItem() {
-    const [item, setItem] = useState({})
-
-    const fetch = async () => {
-        const i = await getDecryptedItem("1", "password")
-        setItem(i)
-    }
-
-    useEffect(() => {
-        fetch()
-    }, [])
-
+export default function PortfolioItem({ decryptedItem }) {
     return (
         <>
-            {item.name} / {item.description}
+            {decryptedItem.forEach((i) => {
+                return (
+                    <p>
+                        {i}: {decryptedItem[i]}
+                    </p>
+                )
+            })}
         </>
     )
 }

@@ -4,8 +4,8 @@ import Login from "./pages/auth/Login"
 import Register from "./pages/auth/Register"
 import Home from "./pages/Home"
 import AddItem from "./components/portfolio/AddItem"
-import PortfolioItem from "./components/portfolio/PortfolioItem"
 import NavigationBar from "./components/NavigationBar"
+import PortfolioItemDetails from "./pages/portfolio/PortfolioItemDetails"
 
 function App() {
     return (
@@ -16,7 +16,7 @@ function App() {
                 <Route path="login" element={<Login />} />
                 <Route path="register" element={<Register />} />
                 <Route path="additem" element={<AddItem />} />
-                <Route path="portfolioitem" element={<PortfolioItem />} />
+                <Route path="item" element={<PortfolioItemDetails />} />
             </Routes>
         </BrowserRouter>
     )
