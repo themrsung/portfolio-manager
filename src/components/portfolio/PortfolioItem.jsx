@@ -16,7 +16,13 @@ export default function PortfolioItem({ decryptedItem }) {
 
     return (
         <>
-            {itemProps.key} / {itemProps.value}
+            {itemProps.map((ip) => {
+                return (
+                    <>
+                        {ip.key} / {ip.value}
+                    </>
+                )
+            })}
         </>
     )
 }
