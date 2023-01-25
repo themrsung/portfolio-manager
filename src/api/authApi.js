@@ -23,7 +23,7 @@ export const getUser = async (id) => {
 
 export const validatePassword = async (id, password) => {
     const user = await getUser(id)
-    if (user === {}) return false // User not found
+    if (user === {} || !user) return false // User not found
 
     const doesPasswordMatch =
         user.password ===
