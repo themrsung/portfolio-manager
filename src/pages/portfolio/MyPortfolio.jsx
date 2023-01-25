@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { isLoggedIn } from "../../api/authApi.ts"
+import { isLoggedIn } from "../../api/authApi"
 import { store } from "../../redux/config"
 import { getDecryptedItemsOfUser } from "../../api/itemsApi"
 import PortfolioItemList from "../../components/portfolio/PortfolioItemList"
