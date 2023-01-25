@@ -36,44 +36,8 @@ export default function AddItem() {
     }
 
     return (
-        <AddItemForm
-            onSubmit={(e) => {
-                e.preventDefault()
-                onAddItemFormSubmitted()
-            }}
-        >
-            <AddItemFormElement>
-                <AddItemFormLabel>passphrase</AddItemFormLabel>
-                <AddItemFormInput
-                    value={passphrase}
-                    onChange={(e) => {
-                        onPassphraseChanged(e.target.value)
-                    }}
-                    type={showPassphrase ? "text" : "password"}
-                />
-            </AddItemFormElement>
-
-            <AddItemFormElement>
-                <AddItemFormLabel>name</AddItemFormLabel>
-                <AddItemFormInput
-                    value={itemName}
-                    onChange={(e) => {
-                        setItemName(e.target.value)
-                    }}
-                />
-            </AddItemFormElement>
-
-            <AddItemFormElement>
-                <AddItemFormLabel>description</AddItemFormLabel>
-                <AddItemFormInput
-                    value={itemDescription}
-                    onChange={(e) => {
-                        setItemDescription(e.target.value)
-                    }}
-                />
-            </AddItemFormElement>
-
-            <div
+        <>
+            <button
                 onClick={() => {
                     setAdditionalProperties(additionalProperties, {
                         key: "",
@@ -82,35 +46,73 @@ export default function AddItem() {
                 }}
             >
                 +
-            </div>
+            </button>
 
-            {additionalProperties.map((ap, i) => {
-                return (
-                    <AddItemFormElement key={i}>
-                        <AddItemFormInput
-                            value={ap.key}
-                            onChange={(e) => {
-                                const aps = additionalProperties
-                                aps[i].key = e.target.value
-                                setAdditionalProperties(aps)
-                            }}
-                        />
-                        <AddItemFormInput
-                            value={ap.value}
-                            onChange={(e) => {
-                                const aps = additionalProperties
-                                aps[i].value = e.target.value
-                                setAdditionalProperties(aps)
-                            }}
-                        />
-                    </AddItemFormElement>
-                )
-            })}
+            <AddItemForm
+                onSubmit={(e) => {
+                    e.preventDefault()
+                    onAddItemFormSubmitted()
+                }}
+            >
+                <AddItemFormElement>
+                    <AddItemFormLabel>passphrase</AddItemFormLabel>
+                    <AddItemFormInput
+                        value={passphrase}
+                        onChange={(e) => {
+                            onPassphraseChanged(e.target.value)
+                        }}
+                        type={showPassphrase ? "text" : "password"}
+                    />
+                </AddItemFormElement>
 
-            <AddItemFormElement>
-                <button type="submit">add item</button>
-            </AddItemFormElement>
-        </AddItemForm>
+                <AddItemFormElement>
+                    <AddItemFormLabel>name</AddItemFormLabel>
+                    <AddItemFormInput
+                        value={itemName}
+                        onChange={(e) => {
+                            setItemName(e.target.value)
+                        }}
+                    />
+                </AddItemFormElement>
+
+                <AddItemFormElement>
+                    <AddItemFormLabel>description</AddItemFormLabel>
+                    <AddItemFormInput
+                        value={itemDescription}
+                        onChange={(e) => {
+                            setItemDescription(e.target.value)
+                        }}
+                    />
+                </AddItemFormElement>
+
+                {additionalProperties.map((ap, i) => {
+                    return (
+                        <AddItemFormElement key={i}>
+                            <AddItemFormInput
+                                value={ap.key}
+                                onChange={(e) => {
+                                    const aps = additionalProperties
+                                    aps[i].key = e.target.value
+                                    setAdditionalProperties(aps)
+                                }}
+                            />
+                            <AddItemFormInput
+                                value={ap.value}
+                                onChange={(e) => {
+                                    const aps = additionalProperties
+                                    aps[i].value = e.target.value
+                                    setAdditionalProperties(aps)
+                                }}
+                            />
+                        </AddItemFormElement>
+                    )
+                })}
+
+                <AddItemFormElement>
+                    <button type="submit">add item</button>
+                </AddItemFormElement>
+            </AddItemForm>
+        </>
     )
 }
 
