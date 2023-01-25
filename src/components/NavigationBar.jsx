@@ -21,7 +21,7 @@ export default function NavigationBar() {
     }
 
     const onPortfolioItemClicked = () => {
-        navigate("/portfolioitem")
+        navigate("/item")
     }
 
     const onLogoutClicked = () => {

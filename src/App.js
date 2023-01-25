@@ -6,6 +6,7 @@ import Home from "./pages/Home"
 import AddItem from "./components/portfolio/AddItem"
 import NavigationBar from "./components/NavigationBar"
 import PortfolioItemDetails from "./pages/portfolio/PortfolioItemDetails"
+import MyPortfolio from "./pages/portfolio/MyPortfolio"
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                 <Route path="register" element={<Register />} />
                 <Route path="additem" element={<AddItem />} />
                 <Route path="item" element={<PortfolioItemDetails />} />
+                <Route path="portfolio" element={<MyPortfolio />} />
             </Routes>
         </BrowserRouter>
     )
