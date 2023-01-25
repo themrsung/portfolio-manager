@@ -88,6 +88,7 @@ export const deleteUser = async (user) => {
 
 export const isLoggedIn = async () => {
     const currentSessionOnServer = store.getState().currentSession
+    console.log(currentSessionOnServer)
     if (!currentSessionOnServer.isLoggedIn) return false
 
     const doesIdMatch =
