@@ -26,6 +26,11 @@ export const addItem = async (item, passphrase) => {
     return res.data
 }
 
+export const deleteItem = async (itemId) => {
+    const res = await axios.delete(`${SERVER_URL}/items/${itemId}`)
+    return res.data
+}
+
 export const getEncryptedItem = async (itemId) => {
     const res = await axios.get(`${SERVER_URL}/items/${itemId}`)
     if (!res) return ""

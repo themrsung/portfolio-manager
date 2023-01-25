@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { deleteItem } from "../../api/itemsApi"
 
 export default function PortfolioItem({ decryptedItem }) {
     const [itemProps, setItemProps] = useState([])
@@ -15,6 +16,10 @@ export default function PortfolioItem({ decryptedItem }) {
         setItemProps(ip)
     }
 
+    const onPortfolioItemDeleted = async () => {
+        const res = await deleteItem(decryptedItem.id)
+    }
+
     useEffect(formatItemProps, [decryptedItem])
 
     return (
@@ -25,6 +30,11 @@ export default function PortfolioItem({ decryptedItem }) {
                         <p>
                             {ip.name} : {ip.value}
                         </p>
+                        <div>
+                            <button onClick={onPortfolioItemDeleted}>
+                                Delete
+                            </button>
+                        </div>
                     </>
                 )
             })}

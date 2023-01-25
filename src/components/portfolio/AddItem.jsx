@@ -96,9 +96,7 @@ export default function AddItem() {
                                 onChange={(e) => {
                                     for (const aps in additionalProperties) {
                                         if (aps.key === e.target.value) {
-                                            setAdditionalProperties(
-                                                additionalProperties
-                                            )
+                                            e.preventDefault()
                                             return
                                         }
                                     }
