@@ -15,6 +15,8 @@ export default function MyPortfolio() {
         const res = await getDecryptedItemsOfUser(userId)
         if (!res) return
 
+        console.log(res)
+
         setItems(res)
     }
 

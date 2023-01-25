@@ -16,6 +16,10 @@ export default function NavigationBar() {
         navigate("/register")
     }
 
+    const onPortfolioClicked = () => {
+        navigate("/portfolio")
+    }
+
     const onAddItemClicked = () => {
         navigate("/additem")
     }
@@ -35,6 +39,7 @@ export default function NavigationBar() {
                 <button onClick={onHomeClicked}>Home</button>
                 <button onClick={onLoginClicked}>Login</button>
                 <button onClick={onRegisterClicked}>Register</button>
+                <button onClick={onPortfolioClicked}>Portfolio</button>
                 <button onClick={onAddItemClicked}>Add Item</button>
                 <button onClick={onPortfolioItemClicked}>Portfolio Item</button>
                 <button onClick={onLogoutClicked}>Logout</button>
