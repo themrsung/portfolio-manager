@@ -54,7 +54,7 @@ export const login = async (id, password) => {
         setCurrentSession({
             isLoggedIn: true,
             userId: id,
-            authKey: HashPassword.v1(`${id}${Date.now().toString().slice(-4)}`)
+            authKey: uuid()
         })
     )
     return true
@@ -90,15 +90,14 @@ export const isLoggedIn = async () => {
     const currentSessionOnServer = store.getState().currentSession
     if (!currentSessionOnServer.isLoggedIn) return false
 
+    const doesIdMatch =
+        window.sessionStorage.getItem("userId") ===
+        currentSessionOnServer.userId
     const doesAuthKeyMatch =
         window.sessionStorage.getItem("authKey") ===
-        HashPassword.v1(
-            `${window.sessionStorage.getItem("userId")}${Date.now()
-                .toString()
-                .slice(-4)}`
-        )
+        currentSessionOnServer.authKey
 
-    return doesAuthKeyMatch
+    return doesIdMatch && doesAuthKeyMatch
 }
 
 export class HashPassword {
