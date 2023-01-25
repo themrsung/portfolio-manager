@@ -1,6 +1,10 @@
+import { useParams } from "react-router-dom"
 import PortfolioItem from "../../components/portfolio/PortfolioItem"
 
-export default function PortfolioItemDetails({ decryptedItem }) {
+export default function PortfolioItemDetails() {
+    const params = useParams()
+    console.log(params)
+
     return (
         <PortfolioItem
             decryptedItem={{
