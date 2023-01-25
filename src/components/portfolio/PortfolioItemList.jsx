@@ -1,14 +1,12 @@
+import PortfolioItem from "./PortfolioItem"
+
 export default function PortfolioItemList({ decryptedItems }) {
-    console.log(decryptedItems)
+    if (!decryptedItems || decryptedItems.length < 1) return <></>
+
     return (
         <>
             {decryptedItems.map((i) => {
-                return (
-                    <>
-                        <h3>i.name</h3>
-                        <p>i.description</p>
-                    </>
-                )
+                return <PortfolioItem decryptedItem={i} />
             })}
         </>
     )
