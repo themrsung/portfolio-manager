@@ -17,12 +17,20 @@ export default function AddItem() {
 
     const [showPassphrase, setShowPassphrase] = useState(false)
 
+    const [additionalProperties, setAdditionalProperties] = useState([])
+
     const onAddItemFormSubmitted = async () => {
         const newItem = {
             name: itemName,
             description: itemDescription,
             owner: "admin"
         }
+
+        additionalProperties.forEach((ap) => {
+            if (ap.key === "") return
+
+            newItem[ap.key] = ap.value
+        })
 
         const res = await addItem(newItem, "password")
         console.log(res)
@@ -65,6 +73,41 @@ export default function AddItem() {
                     }}
                 />
             </AddItemFormElement>
+
+            <button
+                onClick={() => {
+                    setAdditionalProperties(additionalProperties, {
+                        key: "",
+                        value: ""
+                    })
+                }}
+            >
+                +
+            </button>
+
+            {additionalProperties.map((ap, i) => {
+                return (
+                    <AddItemFormElement key={i}>
+                        <AddItemFormInput
+                            value={ap.key}
+                            onChange={(e) => {
+                                const aps = additionalProperties
+                                aps[i].key = e.target.value
+                                setAdditionalProperties(aps)
+                            }}
+                        />
+                        <AddItemFormInput
+                            value={ap.value}
+                            onChange={(e) => {
+                                const aps = additionalProperties
+                                aps[i].value = e.target.value
+                                setAdditionalProperties(aps)
+                            }}
+                        />
+                    </AddItemFormElement>
+                )
+            })}
+
             <AddItemFormElement>
                 <button type="submit">add item</button>
             </AddItemFormElement>
