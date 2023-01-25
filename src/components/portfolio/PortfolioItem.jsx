@@ -5,7 +5,7 @@ export default function PortfolioItem({ decryptedItem }) {
 
     const formatItemProps = () => {
         const ip = []
-        for (key in decryptedItem) {
+        for (const key in decryptedItem) {
             ip.push({
                 name: key,
                 value: decryptedItem[key]
