@@ -5,7 +5,7 @@ import { getDecryptedItemsOfUser } from "../../api/itemsApi"
 import PortfolioItemList from "../../components/portfolio/PortfolioItemList"
 
 export default function MyPortfolio() {
-    const [items, setItems] = useState()
+    const [items, setItems] = useState([])
 
     const fetchItems = async () => {
         const loggedIn = await isLoggedIn()
