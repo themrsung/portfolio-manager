@@ -117,7 +117,7 @@ export default function AddItem() {
                                             (a) => a.key !== ap.key
                                         ),
                                         {
-                                            key: ap.value,
+                                            key: ap.key,
                                             value: e.target.value
                                         }
                                     )
