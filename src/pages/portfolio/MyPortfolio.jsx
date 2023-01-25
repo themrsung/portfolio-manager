@@ -16,7 +16,6 @@ export default function MyPortfolio() {
     const fetchItems = async () => {
         const loggedIn = await isLoggedIn()
 
-        console.log(loggedIn)
         if (!loggedIn) return
 
         const userId = await getCurrentlyLoggedInUserId()
