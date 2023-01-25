@@ -33,7 +33,6 @@ export default function AddItem() {
         })
 
         const res = await addItem(newItem, "password")
-        console.log(res)
     }
 
     return (
@@ -74,7 +73,7 @@ export default function AddItem() {
                 />
             </AddItemFormElement>
 
-            <button
+            <div
                 onClick={() => {
                     setAdditionalProperties(additionalProperties, {
                         key: "",
@@ -83,7 +82,7 @@ export default function AddItem() {
                 }}
             >
                 +
-            </button>
+            </div>
 
             {additionalProperties.map((ap, i) => {
                 return (
