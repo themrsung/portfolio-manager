@@ -11,7 +11,9 @@ const currentSessionSlice = createSlice({
     initialState,
     reducers: {
         setCurrentSession: (state, action) => {
-            state = action.payload
+            state.isLoggedIn = action.payload.isLoggedIn
+            state.userId = action.payload.userId
+            state.authKey = action.payload.authKey
 
             window.sessionStorage.setItem("userId", action.payload.userId)
             window.sessionStorage.setItem("authKey", action.payload.authKey)
