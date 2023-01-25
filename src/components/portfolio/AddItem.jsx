@@ -94,14 +94,33 @@ export default function AddItem() {
                             <AddItemFormInput
                                 value={ap.key}
                                 onChange={(e) => {
-                                    additionalProperties[i].key = e.target.value
+                                    additionalProperties.forEach((aps) => {
+                                        if (aps.key === e.target.value) return
+                                    })
+
+                                    setAdditionalProperties(
+                                        additionalProperties.filter(
+                                            (a) => a.key !== ap.key
+                                        ),
+                                        {
+                                            key: e.target.value,
+                                            value: ap.value
+                                        }
+                                    )
                                 }}
                             />
                             <AddItemFormInput
                                 value={ap.value}
                                 onChange={(e) => {
-                                    additionalProperties[i].value =
-                                        e.target.value
+                                    setAdditionalProperties(
+                                        additionalProperties.filter(
+                                            (a) => a.key !== ap.key
+                                        ),
+                                        {
+                                            key: ap.value,
+                                            value: e.target.value
+                                        }
+                                    )
                                 }}
                             />
                         </AddItemFormElement>
