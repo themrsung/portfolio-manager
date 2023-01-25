@@ -20,7 +20,10 @@ function App() {
                     <Route path="login" element={<Login />} />
                     <Route path="register" element={<Register />} />
                     <Route path="additem" element={<AddItem />} />
-                    <Route path="item/:id" element={<PortfolioItemDetails />} />
+                    <Route
+                        path="item/:id/:passphrase"
+                        element={<PortfolioItemDetails />}
+                    />
                     <Route path="portfolio" element={<MyPortfolio />} />
                 </Routes>
             </BrowserRouter>
