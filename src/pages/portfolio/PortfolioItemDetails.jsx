@@ -19,8 +19,6 @@ export default function PortfolioItemDetails() {
         fetchItem()
     }, [])
 
-    console.log(decryptedItem)
-
     return <PortfolioItem decryptedItem={decryptedItem} />
     // return <PortfolioItem decryptedItem={decryptedItem} />
 }

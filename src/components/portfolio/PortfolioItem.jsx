@@ -15,7 +15,7 @@ export default function PortfolioItem({ decryptedItem }) {
         setItemProps(ip)
     }
 
-    useEffect(formatItemProps, [])
+    useEffect(formatItemProps, [decryptedItem])
 
     return (
         <>
