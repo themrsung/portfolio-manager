@@ -80,3 +80,16 @@ export const getDecryptedItemsOfUser = async (ownerId, passphrase) => {
 
     return decryptedItems
 }
+
+export const updateItem = async (item, passphrase) => {
+    const stringifiedItem = JSON.stringify(item)
+    const encryptedString = encrypt(stringifiedItem, passphrase)
+
+    const res = await axios.put(`${SERVER_URL}/items/${item.id}`, {
+        owner: item.owner,
+        encryptedString: encryptedString
+    })
+
+    if (!res) return {}
+    return res.data
+}

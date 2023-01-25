@@ -8,7 +8,7 @@ export default function PortfolioItem({ decryptedItem }) {
         const ip = []
         for (const key in decryptedItem) {
             ip.push({
-                name: key,
+                key: key,
                 value: decryptedItem[key]
             })
         }
@@ -20,7 +20,23 @@ export default function PortfolioItem({ decryptedItem }) {
         const res = await deleteItem(decryptedItem.id)
     }
 
+    const [isEditing, setIsEditing] = useState(false)
+    const [currentlyEditing, setCurrentlyEditing] = useState("")
+    const [currentlyEditingValue, setCurrentlyEditingValue] = useState("")
+
+    const onPortfolioItemPropEdited = async (key) => {
+        if (!isEditing) setCurrentlyEditing(key)
+        else {
+            const item = decryptedItem
+            item[currentlyEditing] = currentlyEditingValue
+        }
+
+        setIsEditing(!isEditing)
+    }
+
     useEffect(formatItemProps, [decryptedItem])
+
+    const reservedKeys = ["id", "owner"]
 
     return (
         <>
@@ -28,8 +44,19 @@ export default function PortfolioItem({ decryptedItem }) {
                 return (
                     <>
                         <p>
-                            {ip.name} : {ip.value}
+                            {ip.key} : {ip.value}
                         </p>
+                        {!reservedKeys.includes(ip.key) &&
+                            (!isEditing ||
+                                (isEditing && currentlyEditing === ip.key)) && (
+                                <button
+                                    onClick={() => {
+                                        onPortfolioItemPropEdited(ip.key)
+                                    }}
+                                >
+                                    Edit
+                                </button>
+                            )}
                     </>
                 )
             })}
