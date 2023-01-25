@@ -1,4 +1,5 @@
 export default function PortfolioItemList({ decryptedItems }) {
+    console.log(decryptedItems)
     return (
         <>
             {decryptedItems.map((i) => {
