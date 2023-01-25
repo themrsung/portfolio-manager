@@ -16,19 +16,12 @@ export default function MyPortfolio() {
         console.log(loggedIn)
         if (!loggedIn) return
 
-        console.log("A")
-
         const userId = await getCurrentlyLoggedInUserId()
-        console.log("B")
 
         const res = await getDecryptedItemsOfUser(userId, passphrase)
         if (!res) return
 
-        console.log("C")
-
         setItems(res)
-
-        console.log("D")
     }
 
     useEffect(() => {
