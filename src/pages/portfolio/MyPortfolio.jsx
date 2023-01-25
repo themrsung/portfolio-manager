@@ -29,7 +29,7 @@ export default function MyPortfolio() {
 
     useEffect(() => {
         fetchItems()
-    }, [])
+    }, [passphrase])
 
     return (
         <>
