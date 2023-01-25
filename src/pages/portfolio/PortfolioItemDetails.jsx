@@ -5,6 +5,9 @@ export default function PortfolioItemDetails() {
     const params = useParams()
     console.log(params)
 
+    const urlParams = new URLSearchParams(window.location.pathname)
+    console.log(urlParams)
+
     return (
         <PortfolioItem
             decryptedItem={{
