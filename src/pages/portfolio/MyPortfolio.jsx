@@ -3,9 +3,12 @@ import { getCurrentlyLoggedInUserId, isLoggedIn } from "../../api/authApi"
 import { store } from "../../redux/config"
 import { getDecryptedItemsOfUser } from "../../api/itemsApi"
 import PortfolioItemList from "../../components/portfolio/PortfolioItemList"
+import { useSelector } from "react-redux"
 
 export default function MyPortfolio() {
     const [items, setItems] = useState([])
+
+    const passphrase = useSelector((state) => state.passphrase.passphrase)
 
     const fetchItems = async () => {
         const loggedIn = await isLoggedIn()
@@ -18,7 +21,7 @@ export default function MyPortfolio() {
         const userId = await getCurrentlyLoggedInUserId()
         console.log("B")
 
-        const res = await getDecryptedItemsOfUser(userId)
+        const res = await getDecryptedItemsOfUser(userId, passphrase)
         if (!res) return
 
         console.log("C")
