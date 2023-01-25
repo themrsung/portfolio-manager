@@ -94,17 +94,14 @@ export default function AddItem() {
                             <AddItemFormInput
                                 value={ap.key}
                                 onChange={(e) => {
-                                    const aps = additionalProperties
-                                    aps[i].key = e.target.value
-                                    setAdditionalProperties(aps)
+                                    additionalProperties[i].key = e.target.value
                                 }}
                             />
                             <AddItemFormInput
                                 value={ap.value}
                                 onChange={(e) => {
-                                    const aps = additionalProperties
-                                    aps[i].value = e.target.value
-                                    setAdditionalProperties(aps)
+                                    additionalProperties[i].value =
+                                        e.target.value
                                 }}
                             />
                         </AddItemFormElement>
