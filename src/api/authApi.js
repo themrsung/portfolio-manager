@@ -31,6 +31,21 @@ export const validatePassword = async (id, password) => {
     return doesPasswordMatch
 }
 
+export const getCurrentlyLoggedInUserId = async () => {
+    const sessionExistsInRedux = store.getState().currentSession.isLoggedIn
+    if (sessionExistsInRedux) {
+        const id = store.getState().currentSession.userId
+        return id
+    }
+
+    const sessionExistsInSessionStorage = await isLoggedIn()
+    if (sessionExistsInSessionStorage) {
+        return window.sessionStorage.getItem("userId")
+    }
+
+    return ""
+}
+
 export const login = async (id, password) => {
     const wasLoginSuccessful = await validatePassword(id, password)
     if (!wasLoginSuccessful) return false

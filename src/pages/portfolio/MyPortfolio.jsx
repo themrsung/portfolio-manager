@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { isLoggedIn } from "../../api/authApi"
+import { getCurrentlyLoggedInUserId, isLoggedIn } from "../../api/authApi"
 import { store } from "../../redux/config"
 import { getDecryptedItemsOfUser } from "../../api/itemsApi"
 import PortfolioItemList from "../../components/portfolio/PortfolioItemList"
@@ -11,11 +11,9 @@ export default function MyPortfolio() {
         const loggedIn = await isLoggedIn()
         if (!loggedIn) return
 
-        const userId = store.getState().currentSession.userId
+        const userId = await getCurrentlyLoggedInUserId()
         const res = await getDecryptedItemsOfUser(userId)
         if (!res) return
-
-        console.log(res)
 
         setItems(res)
     }
