@@ -7,7 +7,7 @@ export default function PortfolioItemDetails() {
     console.log(params)
 
     const [searchParams] = useSearchParams()
-    console.log(searchParams)
+    console.log(searchParams.passphrase)
 
     return (
         <PortfolioItem
