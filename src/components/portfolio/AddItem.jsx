@@ -1,9 +1,21 @@
 import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import styled from "styled-components"
 import { addItem } from "../../api/itemsApi"
+import { setPassphrase } from "../../redux/reducers/passphraseReducer"
 
 export default function AddItem() {
+    const dispatch = useDispatch()
+
     const [itemName, setItemName] = useState("")
     const [itemDescription, setItemDescription] = useState("")
+
+    const passphrase = useSelector((state) => state.passphrase.passphrase)
+    const onPassphraseChanged = (newPass) => {
+        dispatch(setPassphrase(newPass))
+    }
+
+    const [showPassphrase, setShowPassphrase] = useState(false)
 
     const onAddItemFormSubmitted = async () => {
         const newItem = {
@@ -17,27 +29,67 @@ export default function AddItem() {
     }
 
     return (
-        <>
-            <form
-                onSubmit={(e) => {
-                    e.preventDefault()
-                    onAddItemFormSubmitted()
-                }}
-            >
-                <input
+        <AddItemForm
+            onSubmit={(e) => {
+                e.preventDefault()
+                onAddItemFormSubmitted()
+            }}
+        >
+            <AddItemFormElement>
+                <AddItemFormLabel>passphrase</AddItemFormLabel>
+                <AddItemFormInput
+                    value={passphrase}
+                    onChange={(e) => {
+                        onPassphraseChanged(e.target.value)
+                    }}
+                    type={showPassphrase ? "text" : "password"}
+                />
+            </AddItemFormElement>
+
+            <AddItemFormElement>
+                <AddItemFormLabel>name</AddItemFormLabel>
+                <AddItemFormInput
                     value={itemName}
                     onChange={(e) => {
                         setItemName(e.target.value)
                     }}
                 />
-                <input
+            </AddItemFormElement>
+
+            <AddItemFormElement>
+                <AddItemFormLabel>description</AddItemFormLabel>
+                <AddItemFormInput
                     value={itemDescription}
                     onChange={(e) => {
                         setItemDescription(e.target.value)
                     }}
                 />
+            </AddItemFormElement>
+            <AddItemFormElement>
                 <button type="submit">add item</button>
-            </form>
-        </>
+            </AddItemFormElement>
+        </AddItemFOrm>
     )
 }
+
+const AddItemForm = styled.form`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`
+
+const AddItemFormElement = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: stretch;
+`
+
+const AddItemFormLabel = styled.label`
+    margin-right: auto;
+`
+
+const AddItemFormInput = styled.input`
+    margin-left: auto;
+`
