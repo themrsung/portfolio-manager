@@ -19,7 +19,9 @@ const currentSessionSlice = createSlice({
             window.sessionStorage.setItem("authKey", action.payload.authKey)
         },
         clearCurrentSession: (state) => {
-            state = initialState
+            state.isLoggedIn = false
+            state.userId = ""
+            state.authKey = ""
 
             window.sessionStorage.removeItem("userId")
             window.sessionStorage.removeItem("authKey")
