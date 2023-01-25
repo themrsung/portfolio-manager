@@ -39,10 +39,13 @@ export default function AddItem() {
         <>
             <button
                 onClick={() => {
-                    setAdditionalProperties(additionalProperties, {
-                        key: "",
-                        value: ""
-                    })
+                    setAdditionalProperties([
+                        ...additionalProperties,
+                        {
+                            key: "",
+                            value: ""
+                        }
+                    ])
                 }}
             >
                 +
