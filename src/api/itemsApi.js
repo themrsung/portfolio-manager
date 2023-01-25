@@ -35,8 +35,7 @@ export const getEncryptedItem = async (itemId) => {
 
 export const decryptItem = (encryptedItem, passphrase) => {
     const decryptedString = decrypt(encryptedItem.encryptedString, passphrase)
-    const decryptedObject = JSON.parse(decryptedString)
-    if (!decryptedObject) return {}
+    const decryptedObject = JSON.parse(decryptedString) || {}
 
     return decryptedObject
 }
@@ -68,8 +67,6 @@ export const getDecryptedItemsOfUser = async (ownerId, passphrase) => {
     encryptedItemsOfUser.forEach((item) => {
         decryptedItems.push(decryptItem(item, passphrase))
     })
-
-    console.log(decryptedItems)
 
     // const decryptedItems = encryptedItemsOfUser.filter((i) =>
     //     decryptItem(i, passphrase)
