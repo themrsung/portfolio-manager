@@ -66,6 +66,7 @@ export const getDecryptedItemsOfUser = async (ownerId, passphrase) => {
     let decryptedItems = []
     encryptedItemsOfUser.forEach((item) => {
         console.log("a")
+        console.log(item, passphrase)
         decryptedItems.push(decryptItem(item, passphrase))
     })
 
