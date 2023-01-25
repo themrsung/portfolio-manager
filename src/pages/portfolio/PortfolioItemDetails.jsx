@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom"
 import PortfolioItem from "../../components/portfolio/PortfolioItem"
-import { useSearchParams } from "react-router-dom"
+import { URLSearchParams } from "react-router-dom"
 
 export default function PortfolioItemDetails() {
     const params = useParams()
     console.log(params)
 
-    const [searchParams] = useSearchParams()
+    const searchParams = URLSearchParams(window.location.pathname)
     console.log(searchParams.passphrase)
 
     return (
