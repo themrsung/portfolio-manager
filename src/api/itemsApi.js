@@ -41,6 +41,7 @@ export const getEncryptedItem = async (itemId) => {
 export const decryptItem = (encryptedItem, passphrase) => {
     const decryptedString = decrypt(encryptedItem.encryptedString, passphrase)
     const decryptedObject = decryptedString ? JSON.parse(decryptedString) : {}
+    decryptedObject.id = encryptedItem.id
 
     return decryptedObject
 }

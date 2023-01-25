@@ -30,14 +30,13 @@ export default function PortfolioItem({ decryptedItem }) {
                         <p>
                             {ip.name} : {ip.value}
                         </p>
-                        <div>
-                            <button onClick={onPortfolioItemDeleted}>
-                                Delete
-                            </button>
-                        </div>
                     </>
                 )
             })}
+
+            <div>
+                <button onClick={onPortfolioItemDeleted}>Delete</button>
+            </div>
         </>
     )
 }
