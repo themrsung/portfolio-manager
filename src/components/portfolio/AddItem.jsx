@@ -68,7 +68,7 @@ export default function AddItem() {
             <AddItemFormElement>
                 <button type="submit">add item</button>
             </AddItemFormElement>
-        </AddItemFOrm>
+        </AddItemForm>
     )
 }
 
