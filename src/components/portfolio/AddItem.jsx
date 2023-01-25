@@ -94,9 +94,9 @@ export default function AddItem() {
                             <AddItemFormInput
                                 value={ap.key}
                                 onChange={(e) => {
-                                    additionalProperties.forEach((aps) => {
+                                    for (const aps in additionalProperties) {
                                         if (aps.key === e.target.value) return
-                                    })
+                                    }
 
                                     setAdditionalProperties([
                                         ...additionalProperties.filter(
