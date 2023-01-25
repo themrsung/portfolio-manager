@@ -98,29 +98,29 @@ export default function AddItem() {
                                         if (aps.key === e.target.value) return
                                     })
 
-                                    setAdditionalProperties(
-                                        additionalProperties.filter(
+                                    setAdditionalProperties([
+                                        ...additionalProperties.filter(
                                             (a) => a.key !== ap.key
                                         ),
                                         {
                                             key: e.target.value,
                                             value: ap.value
                                         }
-                                    )
+                                    ])
                                 }}
                             />
                             <AddItemFormInput
                                 value={ap.value}
                                 onChange={(e) => {
-                                    setAdditionalProperties(
-                                        additionalProperties.filter(
+                                    setAdditionalProperties([
+                                        ...additionalProperties.filter(
                                             (a) => a.key !== ap.key
                                         ),
                                         {
                                             key: ap.key,
                                             value: e.target.value
                                         }
-                                    )
+                                    ])
                                 }}
                             />
                         </AddItemFormElement>
